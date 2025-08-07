@@ -1,0 +1,20 @@
+{
+  "name": "pos_system",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+  "dev": "concurrently \"npm run start-backend\" \"npm run start-frontend\" \"wait-on http://localhost:5173 && npm run electron\"",
+  "start-backend": "cd backend && node index.js",
+  "start-frontend": "cd frontend && npm run dev",
+  "electron": "electron ./electron/main.js"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "electron": "^37.2.0",
+    "wait-on": "^8.0.3"
+  }
+}
