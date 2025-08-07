@@ -91,7 +91,7 @@ export default function Proveedores() {
 
   useEffect(() => {
     if (!auth?.token) return;
-    fetch('http://localhost:3001/api/proveedores', {
+    fetch('https://pos-system-t5am.onrender.com/api/proveedores', {
       headers: {
         Authorization: `Bearer ${auth.token}`,
       },
@@ -109,8 +109,8 @@ export default function Proveedores() {
   const handleSaveProveedor = async (proveedor) => {
     const method = proveedor.id ? 'PUT' : 'POST';
     const url = proveedor.id
-      ? `http://localhost:3001/api/proveedores/${proveedor.id}`
-      : 'http://localhost:3001/api/proveedores';
+      ? `https://pos-system-t5am.onrender.com/api/proveedores/${proveedor.id}`
+      : 'https://pos-system-t5am.onrender.com/api/proveedores';
 
     try {
       const res = await fetch(url, {
@@ -144,7 +144,7 @@ export default function Proveedores() {
     if (!window.confirm('¿Seguro que querés eliminar este proveedor?')) return;
 
     try {
-      const res = await fetch(`http://localhost:3001/api/proveedores/${id}`, {
+      const res = await fetch(`https://pos-system-t5am.onrender.com/api/proveedores/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${auth.token}`,

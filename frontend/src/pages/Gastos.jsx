@@ -38,7 +38,7 @@ export default function Gastos() {
   const obtenerGastos = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/gastos/sucursal/${sucursal_id}`,
+        `https://pos-system-t5am.onrender.com/api/gastos/sucursal/${sucursal_id}`,
         {
           headers: { Authorization: `Bearer ${auth.token}` },
         }
@@ -64,7 +64,7 @@ export default function Gastos() {
 
     try {
       await axios.post(
-        'http://localhost:3001/api/gastos',
+        'https://pos-system-t5am.onrender.com/api/gastos',
         { categoria, descripcion, monto: parseFloat(monto) },
         { headers: { Authorization: `Bearer ${auth.token}` } }
       );

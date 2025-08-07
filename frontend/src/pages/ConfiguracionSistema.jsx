@@ -21,7 +21,7 @@ export default function ConfiguracionSistema() {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get('http://localhost:3001/api/configuracion/sistema'); // Asegurate que esta ruta sea la correcta
+      const res = await axios.get('https://pos-system-t5am.onrender.com/api/configuracion/sistema'); // Asegurate que esta ruta sea la correcta
       setForm({
         simbolo_moneda: res.data.simbolo_moneda || '',
         formato_decimal: res.data.formato_decimal || '',
@@ -54,7 +54,7 @@ export default function ConfiguracionSistema() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put('http://localhost:3001/api/configuracion/sistema', form); // Asegurate que esta ruta sea la correcta
+      await axios.put('https://pos-system-t5am.onrender.com/api/configuracion/sistema', form); // Asegurate que esta ruta sea la correcta
       Swal.fire('Configuración guardada correctamente', '', 'success');
       fetchConfiguracion(); // Recarga los datos desde el backend
     } catch (err) {

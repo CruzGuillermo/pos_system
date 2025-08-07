@@ -69,7 +69,7 @@ export default function Ventas() {
     if (!token) return;
     setLoadingProductos(true);
     axios
-      .get("http://localhost:3001/api/productos", {
+      .get("https://pos-system-t5am.onrender.com/api/productos", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setProductos(res.data))
@@ -80,7 +80,7 @@ export default function Ventas() {
   useEffect(() => {
     if (!token) return;
     axios
-      .get("http://localhost:3001/api/cajas/abierta", {
+      .get("https://pos-system-t5am.onrender.com/api/cajas/abierta", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setCajaAbierta(res.data))
@@ -90,7 +90,7 @@ export default function Ventas() {
   useEffect(() => {
   if (!token) return;
   axios
-    .get("http://localhost:3001/api/configuracion/sistema", {
+    .get("https://pos-system-t5am.onrender.com/api/configuracion/sistema", {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then((res) => setConfiguracionSistema(res.data))
@@ -195,7 +195,7 @@ const onSubmitVenta = async (data) => {
   };
 
   try {
-    const response = await axios.post("http://localhost:3001/api/ventas", venta, {
+    const response = await axios.post("https://pos-system-t5am.onrender.com/api/ventas", venta, {
       headers: { Authorization: `Bearer ${token}` },
     });
 

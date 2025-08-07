@@ -32,7 +32,7 @@ export default function Productos() {
     if (!auth?.token) return;
     setLoading(true);
     setError('');
-    fetch('http://localhost:3001/api/productos', {
+    fetch('https://pos-system-t5am.onrender.com/api/productos', {
       headers: { Authorization: `Bearer ${auth.token}` },
     })
       .then(res => {
@@ -69,8 +69,8 @@ export default function Productos() {
 
     const method = producto.id ? 'PUT' : 'POST';
     const url = producto.id
-      ? `http://localhost:3001/api/productos/${producto.id}`
-      : 'http://localhost:3001/api/productos';
+      ? `https://pos-system-t5am.onrender.com/api/productos/${producto.id}`
+      : 'https://pos-system-t5am.onrender.com/api/productos';
 
     fetch(url, {
       method,
@@ -101,7 +101,7 @@ export default function Productos() {
     if (!auth?.token) return alert('No autorizado');
     if (!window.confirm('¿Seguro que querés eliminar este producto?')) return;
 
-    fetch(`http://localhost:3001/api/productos/${id}`, {
+    fetch(`https://pos-system-t5am.onrender.com/api/productos/${id}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${auth.token}` },
     })

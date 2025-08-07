@@ -20,7 +20,7 @@ export default function Sucursales() {
     if (!auth?.token) return;
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:3001/api/sucursales', {
+      const res = await fetch('https://pos-system-t5am.onrender.com/api/sucursales', {
         headers: {
           Authorization: `Bearer ${auth.token}`,
         },
@@ -47,8 +47,8 @@ export default function Sucursales() {
   const handleSaveSucursal = async (sucursal) => {
     const method = sucursal.id ? 'PUT' : 'POST';
     const url = sucursal.id
-      ? `http://localhost:3001/api/sucursales/${sucursal.id}`
-      : 'http://localhost:3001/api/sucursales';
+      ? `https://pos-system-t5am.onrender.com/api/sucursales/${sucursal.id}`
+      : 'https://pos-system-t5am.onrender.com/api/sucursales';
 
     try {
       const res = await fetch(url, {
@@ -85,7 +85,7 @@ export default function Sucursales() {
     if (!window.confirm('¿Seguro que querés eliminar esta sucursal?')) return;
 
     try {
-      const res = await fetch(`http://localhost:3001/api/sucursales/${id}`, {
+      const res = await fetch(`https://pos-system-t5am.onrender.com/api/sucursales/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${auth.token}`,

@@ -11,7 +11,7 @@ export default function CodigosBarras() {
   useEffect(() => {
     if (!auth?.token) return;
     setLoading(true);
-    fetch('http://localhost:3001/api/productos', {
+    fetch('https://pos-system-t5am.onrender.com/api/productos', {
       headers: { Authorization: `Bearer ${auth.token}` },
     })
       .then(res => {

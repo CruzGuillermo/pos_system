@@ -16,7 +16,7 @@ export default function HistorialVentas({ show, onClose }) {
 
     const cargarVentas = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/ventas", {
+        const res = await fetch("https://pos-system-t5am.onrender.com/api/ventas", {
           headers: { Authorization: "Bearer " + auth.token },
         });
         const data = await res.json();
@@ -31,7 +31,7 @@ export default function HistorialVentas({ show, onClose }) {
   }, [show, auth.token]);
 
   const handleReimprimir = (id) => {
-    window.open(`http://localhost:3001/api/ventas/${id}/ticket`, "_blank");
+    window.open(`https://pos-system-t5am.onrender.com/api/ventas/${id}/ticket`, "_blank");
   };
 
   const handleAnularVenta = async (id) => {
@@ -47,7 +47,7 @@ export default function HistorialVentas({ show, onClose }) {
     if (!confirm.isConfirmed) return;
 
     try {
-      const res = await fetch(`http://localhost:3001/api/ventas/${id}/anular`, {
+      const res = await fetch(`https://pos-system-t5am.onrender.com/api/ventas/${id}/anular`, {
         method: "PUT",
         headers: {
           Authorization: "Bearer " + auth.token,
@@ -77,7 +77,7 @@ export default function HistorialVentas({ show, onClose }) {
 
   const handleVerDetalle = async (id) => {
     try {
-      const res = await fetch(`http://localhost:3001/api/ventas/${id}`, {
+      const res = await fetch(`https://pos-system-t5am.onrender.com/api/ventas/${id}`, {
         headers: { Authorization: "Bearer " + auth.token },
       });
       const data = await res.json();

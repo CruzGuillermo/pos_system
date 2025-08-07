@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3001/api', // Cambialo según tu entorno
+  baseURL: 'https://pos-system-t5am.onrender.com/api', // Cambialo según tu entorno
   headers: {
     'Content-Type': 'application/json',
   },

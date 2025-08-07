@@ -69,14 +69,14 @@ useEffect(() => {
   useEffect(() => {
     if (!auth?.token) return;
 
-    fetch('http://localhost:3001/api/categorias', {
+    fetch('https://pos-system-t5am.onrender.com/api/categorias', {
       headers: { Authorization: `Bearer ${auth.token}` },
     })
       .then(res => res.json())
       .then(data => setCategorias(data))
       .catch(() => setCategorias([]));
 
-    fetch('http://localhost:3001/api/unidades', {
+    fetch('https://pos-system-t5am.onrender.com/api/unidades', {
       headers: { Authorization: `Bearer ${auth.token}` },
     })
       .then(res => res.json())

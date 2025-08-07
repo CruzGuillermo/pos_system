@@ -71,7 +71,7 @@ export default function Stock() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:3001/api/stock/sucursal', {
+      const res = await fetch('https://pos-system-t5am.onrender.com/api/stock/sucursal', {
         headers: { Authorization: 'Bearer ' + auth.token }
       });
       if (!res.ok) throw new Error('Error cargando stock');
@@ -86,7 +86,7 @@ export default function Stock() {
   const fetchProductos = async () => {
     setLoadingProductos(true);
     try {
-     const res = await fetch('http://localhost:3001/api/productos', {
+     const res = await fetch('https://pos-system-t5am.onrender.com/api/productos', {
   headers: { Authorization: `Bearer ${auth.token}` },
     })
       if (!res.ok) throw new Error('Error cargando productos');
@@ -129,8 +129,8 @@ export default function Stock() {
     }
     try {
       const url = modalType === 'crear'
-  ? 'http://localhost:3001/api/stock'
-  : `http://localhost:3001/api/stock/${editId}`;
+  ? 'https://pos-system-t5am.onrender.com/api/stock'
+  : `https://pos-system-t5am.onrender.com/api/stock/${editId}`;
 
       const method = modalType === 'crear' ? 'POST' : 'PUT';
       const res = await fetch(url, {

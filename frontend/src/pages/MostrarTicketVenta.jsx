@@ -14,7 +14,7 @@ const MostrarTicketVenta = ({ ventaId }) => {
       setLoading(true);
       setError(null);
       try {
-        const res = await axios.get(`http://localhost:3001/api/ventas/${ventaId}/ticketinfo`, {
+        const res = await axios.get(`https://pos-system-t5am.onrender.com/api/ventas/${ventaId}/ticketinfo`, {
           headers: { Authorization: "Bearer TU_TOKEN" },
         });
         setVentaCompleta(res.data);

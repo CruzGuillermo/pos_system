@@ -546,7 +546,7 @@ function ModalMovimientoCaja({ show, onHide, tipo, caja_id, token, onSuccess }) 
     }
 
     try {
-      const res = await fetch("http://localhost:3001/api/cajas/movimientos", {
+      const res = await fetch("https://pos-system-t5am.onrender.com/api/cajas/movimientos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
