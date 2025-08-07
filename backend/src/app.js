@@ -24,17 +24,36 @@ const afipRoutes = require('./afip/afip.routes');
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = [
+  'https://pos-system-sepia.vercel.app', // tu frontend Vercel
+  'http://localhost:3000', // pruebas locales React
+];
+
+// Middleware CORS configurado para permitir solo esos orígenes
+app.use(cors({
+  origin: function(origin, callback) {
+    // permitir llamadas sin origen (ej Postman, curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = `El CORS policy no permite este origen: ${origin}`;
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true,
+}));
+
 app.use(express.json());
+
 const fs = require('fs');
 
 console.log('Certificado:', fs.readFileSync('./src/afip/certs/certificado.pem', 'utf8').slice(0, 100));
 console.log('Clave privada:', fs.readFileSync('./src/afip/certs/clave-privada.key', 'utf8').slice(0, 100));
 
-
 app.get('/api/ping', (req, res) => {
   res.json({ message: 'pong' });
 });
+
 app.use('/api/auth', authRoutes);
 app.use('/api/sucursales', sucursalesRoutes);
 app.use('/api/categorias', categoriasRoutes);
@@ -43,12 +62,12 @@ app.use('/api/productos', productosRoutes);
 app.use('/api/stock', stockRoutes);
 app.use('/api/ventas', ventasRoutes);
 app.use('/api/clientes', clientesRoutes);
-app.use('/api/cajas', cajasRoutes); // ✅ Nueva línea
+app.use('/api/cajas', cajasRoutes);
 app.use('/api/proveedores', proveedoresRoutes);
 app.use('/api/compras', comprasRoutes);
 app.use('/api/gastos', gastosRoutes);
 app.use('/api/cuentas_corrientes', cuentasCorrientesRoutes);
-app.use('/api/reportes', reportesRoutes); // <-- Montamos rutas de reportes
+app.use('/api/reportes', reportesRoutes);
 app.use('/api/permisos', permisosRoutes);
 app.use('/api/configuracion', configuracionRoutes);
 app.use('/api/configuracion/sucursal', configuracionSucursalRoutes);
